@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:500&display=swap');
+
+input {
+    width: 50%;
+    border: 2px solid #ffe7e7;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+input:focus {
+  border-color: #c0392b;
+  box-shadow: 0px 0px 8px 0px #c0392b;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: #c0392b;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+    input {
+        width: 80%;
+        border: 2px solid #ffe7e7;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: .3s;
+    }
+}

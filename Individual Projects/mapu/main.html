@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <title>XYZ Maps Example: Hello World</title>
+
+       <script src="../xyz-maps-common.min.js" type="text/javascript" charset="UTF-8" ></script>
+       <script src="../xyz-maps-core.min.js" type="text/javascript" charset="UTF-8" ></script>
+       <script src="../xyz-maps-display.min.js" type="text/javascript" charset="UTF-8" ></script>
+
+        <style type="text/css">
+           #map {
+               position: absolute;
+               overflow: hidden;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+           }
+        </style>
+   </head>
+   <body>
+       <div id="map"></div>
+
+       <script type="application/javascript">
+           //specify your credentials for image and link layers
+             var YOUR_ACCESS_TOKEN = window.parent.YOUR_ACCESS_TOKEN;
+
+/*###visiblesource*/
+// setup the Map Display
+window.display = new  here.xyz.maps.Map( document.getElementById("map"), {
+   zoomLevel : 17,
+   center: {
+       longitude: -122.48024, latitude: 37.77326
+   },
+   // add layers to display
+   layers: [
+       new here.xyz.maps.layers.TileLayer({
+           name: 'Image Layer',
+           min: 1,
+           max: 20,
+           // image layer for displaying satellite images
+           provider: new here.xyz.maps.providers.ImageProvider({
+               name: 'Live Map',
+               url : 'https://{SUBDOMAIN_INT_1_4}.mapcreator.tilehub.api.here.com/tilehub/wv_livemap_bc/png/sat/256/{QUADKEY}?access_token='+YOUR_ACCESS_TOKEN
+           })
+       })
+   ]
+});
+
+/*visiblesource###*/
+       </script>
+   </body>
+</html>

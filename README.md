@@ -1,2 +1,1 @@
-# image-slider
-photo album
+Photo album
