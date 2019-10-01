@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+    <link rel="stylesheet" href="main.css">
+    <title>Object Detection Tensorflow</title>
+</head>
+<body>
+    <center>
+        <h1 style="font-family: 'Oswald'" >Object Detection using Tensorflow</h1>        
+        <img id="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk-CvXYEJgK0LwlmLSDil-MKjWEEg9URP9qeACHsj11OmQLqdx" alt="" style="width: 200px; height: 200px;">
+        <br> <br>
+        <input id="url" placeholder="Enter Image URL" /> <br>
+        <button onclick="setImage()" >Detect</button>
+        <h2 style="font-family: 'Oswald'" id="predictionResult"></h2>
+        <script>
+            function setImage() {
+                if(document.getElementById('url').value===""){
+                    alert("Please Enter Some Image URL")
+                } else {
+                    document.getElementById('predictionResult').innerHTML = "Loading..."
+                    const url = document.getElementById('url').value
+                    document.getElementById('img').src = url
+                    const img = document.getElementById('img');
+                    cocoSsd.load().then(model => {
+                        model.detect(img).then(predictions => {
+                            console.log('Predictions: ', predictions);
+                            document.getElementById('predictionResult').innerHTML = predictions[0].class
+                        });
+                    });
+                }
+            }
+        </script>
+    </center>
+</body>
+</html>
