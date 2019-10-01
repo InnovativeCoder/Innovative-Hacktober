@@ -1,0 +1,25 @@
+The following problem has been described in "About Problem" section same folder in this repository.
+
+The approach for the following was done as :-
+
+2 methods namely
+
+1.Bag of Words
+
+2.TF-IDF Transformation 
+
+were applied to predict the desired outcome and the models which were used for predictions were
+
+1.Logistic Regression
+
+2.Support vector machine
+
+3.Random Forest
+
+4.Multinomial Naive Bayes
+
+5.ADA Boost Classifier
+
+and the best results were obtained by ADA Boost Classifier when applied tf-idf transformation with predicted on f1-score averaged micro.
+
+Complete code file is present in Innoplexus.ipynb
