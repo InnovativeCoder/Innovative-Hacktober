@@ -1,0 +1,33 @@
+body{
+  background-color: rgba(45, 52, 54,0.85)
+}
+h1{
+  text-align: center;
+  color:white;
+  font-family: 'Fira Code', monospace;
+  margin-top: 50px;
+}
+.maindiv{
+  width: 70%;
+  height: 350px;
+  border: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-image: url("img1.jpg");
+  background-size: 100% 100%;
+  box-shadow : 1px 2px 10px 10px white;
+  animation: slider 9s infinite linear;
+}
+@keyframes slider {
+  0%{
+    background-image: url("img1.jpg");
+  }
+  35%{
+    background-image: url("img2.jpg");
+  }
+  75%{
+    background-image: url("img3.jpg");
+  }
+}
