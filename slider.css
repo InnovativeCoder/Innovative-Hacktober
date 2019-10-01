@@ -1,11 +1,14 @@
 body{
-  background-color: rgba(45, 52, 54,0.85)
+  background-image: url("https://st.depositphotos.com/3008028/3749/i/950/depositphotos_37493071-stock-photo-abstract-grey-background.jpg");
 }
 h1{
   text-align: center;
-  color:white;
+  color:black;
   font-family: 'Fira Code', monospace;
   margin-top: 50px;
+}
+#head{
+  margin-top: 120px;
 }
 .maindiv{
   width: 70%;
