@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100|Roboto:100|Opsen+Sans:300&amp;display=swap"
+        rel="stylesheet">
+    <title>Random Word Generator</title>
+</head>
+
+<body>
+    <h2 id="randWord">Your daily Random Word is </h2>
+    <p><button onclick="refresh()" class="button">Refresh</button></p>
+
+
+    <script>
+        var randomWords = require('random-words');
+
+        document.getElementById("randWord").innerHTML = "Your daily Random Word: " + cap(randomWords());
+
+        function refresh() {
+            document.getElementById("randWord").innerHTML = "Your daily Random Word: " + cap(randomWords());
+        }
+
+        function cap(name) {
+            return name.charAt(0).toUpperCase() + name.slice(1)
+        }
+
+
+    </script>
+
+
+</body>
+
+
+</html>
