@@ -1,0 +1,248 @@
+body{
+  /* background-color:#EDEF9E; */
+  /* background-color:#36622b;
+  font-family: Arial, Helvetica, sans-serif; */
+background: #348F50;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #56B4D3, #348F50);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #56B4D3, #348F50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+@media screen and (max-width: 1400px) {
+  .con{
+    overflow: scroll;
+  }
+}
+
+a:hover{
+  opacity: 0.6;
+}
+
+.text{
+  resize:none;
+  margin-top: 2vh;
+}
+
+.slider{
+  margin-top:2vh;
+  margin-bottom:100vh;
+}
+
+
+.content{
+  height:60vh;
+  width:72.5vw;
+  background-color:#F5F5F5;
+  border-radius: 5px;
+  margin-bottom:10vh;
+  text-align:center;
+  margin-top:0.5vh;
+
+}
+
+.content2{
+  height:35vh;
+  width:72.5vw;
+  background-color:#F5F5F5;
+  border-radius: 5px;
+  margin-bottom:10vh;
+  text-align:center;
+  margin-top:0.5vh;
+
+}
+
+
+/* Contact us css */
+.contact_info{
+  text-align:left;
+  padding-top:5vh;
+  float:left;
+}
+.map{
+  float:right;
+}
+@media screen and (max-width: 1400px) {
+  .con{
+    overflow: scroll;
+  }
+}
+/* End of contact us css */
+
+/* Feedback css */
+.feed{
+  height:80vh;
+  width:72.5vw;
+  background-color:#F5F5F5;
+  border-radius: 5px;
+  margin-bottom:20vh;
+  text-align:center;
+  margin-top:0.5vh;
+
+}
+/* End of feedback css */
+
+.footer{
+  background-color: #16a085;
+  bottom:0;
+  position: fixed;
+  height:10vh;
+  color:#fff;
+  margin-top:10vh;
+  z-index: 50;
+}
+
+
+
+/* Login page css */
+
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 50; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 40%;
+  }
+}
+
+
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 40%;
+}
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
