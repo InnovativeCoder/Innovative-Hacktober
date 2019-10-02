@@ -1,0 +1,10 @@
+chrome.browserAction.onClicked.addListener(()=>{
+    chrome.tabs.create({
+        url:"https://www.usernamewilson.me"
+    })
+});
+chrome.runtime.onInstalled.addListener(obj=>{
+    if(obj.reason==="install"){
+        chrome.storage.sync.set({type:"default",bgurl:"./images/bg/wallpaper4.jpg"});
+    }
+})
