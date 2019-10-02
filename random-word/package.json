@@ -1,0 +1,21 @@
+{
+  "name": "random-word",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [
+    "random",
+    "word",
+    "generator"
+  ],
+  "author": "Sanjit1",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^6.0.11",
+    "random-words": "^1.1.0"
+  }
+}
