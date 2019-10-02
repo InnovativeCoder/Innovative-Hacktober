@@ -6,6 +6,7 @@ Random Words is a small random word generating app I wrote for the hacktober fes
 
 
 ## How to run
+#### NOOOOOOO what are you doing?????? This ain't your browser html, this is node.js.
 This app uses [electronjs](https://electronjs.org/), to run html that supports Node Js. Oh yeah! So to run this go to the parent directory of the repository and then run these commands: Same for Windows, Mac and Linux:
 ```
 cd random-words 
