@@ -1,4 +1,5 @@
 # Random Words
+:wave:
 Random Words is a small random word generating app I wrote for the hacktober fest this October.
 ![badge](https://img.shields.io/badge/language-node.js-green)
 ![badge](https://img.shields.io/badge/name-Random%20Words-green)
