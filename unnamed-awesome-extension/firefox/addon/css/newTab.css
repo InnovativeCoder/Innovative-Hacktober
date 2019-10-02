@@ -1,0 +1,223 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background:rgb(24, 24, 34);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.searchbar-wrapper{
+    position: relative;
+}
+.search-bar{
+    width: 100%;
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 1.5em;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+input:focus{
+    outline: none;
+}
+.search-icon{
+  position: absolute;
+  right: 0;
+  top:50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.search-icon:hover{
+    transform: translateY(-50%) scale(1.2);
+}
+.top-sites{
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+.list-item{
+    width: 100px;
+    text-align: center;
+    background: white;
+    margin: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+  
+}
+.list-item .label{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.2em;
+}
+.list-item .overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    top:0;
+    left:0;
+}
+.list-item .overlay:hover{
+    background: rgba(83, 73, 73, 0.274);
+}
+
+.site-icon{
+    object-fit: contain;
+    width: 25px;
+    height: 25px;
+}
+.branding{
+    margin: 10px;
+}
+.brand-title{
+    font-size: 3em;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+.date-time{
+  color: white;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: 2em;
+}
+.credits{
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.bg-wallpaper{
+    /* z-index:-1; */
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    
+}
+.bg-wallpaper img{
+    background-size: cover; 
+    width:100%;
+    height: 100%;
+    display: none;
+}
+
+.customize{
+    position: absolute;
+    bottom: 10px;
+    right:10px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    background: rgb(13, 20, 37);
+    padding: 5px 20px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid cyan;
+   
+
+}
+.customize .icon{
+    border-radius: 50%;
+    padding:2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.customize .icon img{
+    width:15px;
+    height: 15px;
+    stroke: rgb(53, 4, 250) !important;
+}
+.editWindow{
+    position: relative;
+    right: -100%;
+    bottom: 10px; 
+    background: white;
+    position:absolute;
+    transition:all 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    font-size: 1.2em;
+    padding: 10px 5px;
+    font-weight: bold;
+    border-radius: 5px;
+    filter: drop-shadow(2px 2px 10px black);
+    color: rgb(5, 10, 36);
+}
+.wallpapers {
+    display: flex;
+    margin-top: 10px;
+}
+.wallpapers img{
+    width:150px;
+    height: 70px;
+    margin: 2px;
+    cursor: pointer;
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.wallpapers img:hover{
+    transform: scale(1.2);
+}
+.close{
+    text-align: right;
+    color: red;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.editWindow.open{
+    right: 10px;
+    bottom: 10px;
+}
+.custom-bg{
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 219, 0);
+    cursor: pointer;
+    padding: 5px;
+}
+.custom-bg div:hover{
+    text-decoration: underline;
+}
+.file-selector{
+    display: none;
+}
+.alert{
+    position: absolute;
+    right: -100%;
+    top:20px;
+    padding: 10px 20px;
+    background: rgb(194, 33, 4);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: all 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+.alert.show{
+    right:10px;
+}

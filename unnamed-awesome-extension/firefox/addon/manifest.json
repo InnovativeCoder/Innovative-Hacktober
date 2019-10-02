@@ -1,0 +1,31 @@
+{
+    "version":"1.0",
+    "manifest_version":2,
+    "name":"WCS-Custom",
+    "description":"a classic customized experience for your browser",
+    "icons":{
+        "128":"./images/icon.png",
+        "48":"./images/icon.png",
+        "16":"./images/icon.png"
+    },
+    "browser_action":{
+        "default_icon":{
+            "128":"./images/icon.png",
+            "48":"./images/icon.png",
+            "16":"./images/icon.png"
+        }
+    },
+    "chrome_url_overrides": {
+        "newtab": "./newTab.html"
+      },
+    "background": {
+    "scripts": ["./js/background.js"],
+    "persistent": false
+    },
+    "applications": {
+        "gecko": {
+          "id": "wcsy@usernamewilson.com"
+        }
+      },
+    "permissions": ["http://*/*","https://*/*","topSites","storage","tabs"]
+}
