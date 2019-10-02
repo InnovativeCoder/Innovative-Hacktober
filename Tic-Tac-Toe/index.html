@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Tic Tac Toe</title>
+		<link rel="stylesheet" type="text/css" href="css/tic-tac-toe.css">
+		<script type="text/javascript" src="js/tic-tac-toe.js"></script>
+	</head>
+	<body onload = 'StartGame()'>
+		<h1 id = 'message'>Tic-Tac-Toe</h1>
+		<h3 id = 'message' style="color:red">(Computer is 'O' and Player is 'X')</h3>
+		<!--h3>Select First Player</h3>
+		<button type="button">You</button>
+		<button type="button">Computer</button>
+		<p> </p-->
+		<div class = 'wrapper' id="tictactoe">
+			<table border='1' align= "center"	>
+				<tr>
+					<td id = 's0' class='square' onclick = 'nextMove(0)'></td>
+					<td id = 's1' class='square' onclick = 'nextMove(1)'></td>
+					<td id = 's2' class='square' onclick = 'nextMove(2)'></td>
+				</tr>
+				<tr>
+					<td id = 's3' class='square' onclick = 'nextMove(3)'></td>
+					<td id = 's4' class='square' onclick = 'nextMove(4)'></td>
+					<td id = 's5' class='square' onclick = 'nextMove(5)'></td>
+				</tr>
+				<tr>
+					<td id = 's6' class='square' onclick = 'nextMove(6)'></td>
+					<td id = 's7' class='square' onclick = 'nextMove(7)'></td>
+					<td id = 's8' class='square' onclick = 'nextMove(8)'></td>
+				</tr>
+			</table>
+		</div>
+		<p></p>
+		<button type="button" onclick = 'StartGame()'>Play Again</button>
+	</body>
+</html>
