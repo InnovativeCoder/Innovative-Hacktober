@@ -9,7 +9,6 @@ int get_positive_height(string prompt);
 
 int main(void)
 {
-    //char hash = get_char("Enter the hash character: \n");
     int height = get_positive_height("Height: \n");
     for (int i = 1; i <= height; i++) 
     {
