@@ -2,19 +2,22 @@
 /*
   Author : Gana
   Date: 30-09-2019
-
+  
+  Edited by: Shiva Sankeerth
+  Date: 2-10-2019
+	
 
 */
 
 
-
+import java.lang.*
 public class palindrome {
  
 	public static void main(String[] args)
 	{
  
 		int lastDigit,sum=0,a;    
-		int inputNumber=171; //It is the number  to be checked for palindrome 
+		int inputNumber= Integer.parseInt(args[0]) ; //It is the number  to be checked for palindrome 
  
 		a=inputNumber; 
         
