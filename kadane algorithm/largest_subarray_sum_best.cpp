@@ -9,8 +9,8 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>a[i];
     }
-    //khadane algorithm
-    //time complexity is 0n.
+    //kadane algorithm
+    //time complexity is O(n).
     int cursum=0;
     for(int i=0;i<n;i++){
         cursum+=a[i];
