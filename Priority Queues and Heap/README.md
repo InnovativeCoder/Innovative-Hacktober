@@ -1,4 +1,4 @@
-Self Immplementation of Priority Queue Functions and using that to implement a Heap
+Self Implementation of Priority Queue Functions and using that to implement a Heap
 
 Header File - PQ.h
   Uses STL priority queue of C++
