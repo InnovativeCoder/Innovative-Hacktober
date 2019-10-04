@@ -34,3 +34,9 @@ h1{
     background-image: url("img3.jpg");
   }
 }
+ #sticky-footer{
+    margin-bottom: 0%;
+    margin-top: 400px;
+    padding-bottom: 0%;
+
+ }
