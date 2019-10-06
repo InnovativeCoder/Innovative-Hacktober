@@ -1,5 +1,4 @@
 #Name : Nooras Fatima Ansari
-#Rollno : 16co01
 #DFS ALGORITHM
 graph = {'A': ['B','C','D'],
          'B': ['E','F'],
