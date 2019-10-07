@@ -6,6 +6,6 @@ more the brightness more dense the character is chosen to represent the pixel
 
 ### BELOW ARE THE OUTPUT SCREENSHOTS
 
-![SS1](/output_pics/ss_1.png)
+![](/Individual%20Projects/ASCII%20using%20Python/output_pics/ss_1.png)
 
-![SS2](/output_pics/ss_2.png)
+![](/Individual%20Projects/ASCII%20using%20Python/output_pics/ss_2.png)
