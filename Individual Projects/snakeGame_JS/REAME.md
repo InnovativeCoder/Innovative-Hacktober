@@ -3,7 +3,7 @@ A simple snake game written in JavaScript.
 The code still needs to be cleaned.
 Your might want to contribute to take this game to the next level(Even literally. You see, there is only one level :) )
 
-![alt text](https://github.com/Gs-001/Innovative-Hacktober/blob/master/snakeGame_JS/img/Capture.PNG)
+![alt text](https://github.com/Gs-001/Innovative-Hacktober/blob/SnakeGameJS_Gs-001/Individual%20Projects/snakeGame_JS/img/Capture.PNG)
 
 Build Instructions:
             (I used Visual Studio Code for this project)
