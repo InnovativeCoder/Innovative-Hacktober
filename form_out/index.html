@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <div id="webchat"/>
+  <script src="webchat_js/webchat-0.5.6.js"></script>
+  <script>
+    WebChat.default.init({
+      selector: "#webchat",
+      interval: 1000, // 1000 ms between each message
+      customData: {"userId": "123"}, // arbitrary custom data. Stay minimal as this will be added to the socket
+      socketUrl: "http://localhost:5005",
+      socketPath: "/socket.io/",
+      title: "MINDS BUDDY",
+      subtitle: " ",
+      inputTextFieldHint: "Type a message...",
+      connectingText: "Waiting for server...",
+      hideWhenNotConnected: true,
+      fullScreenMode: false,
+      profileAvatar: "bot logo's/samll_01.png",
+      openLauncherImage: 'myCustomOpenImage.png',
+      closeLauncherImage: 'myCustomCloseImage.png',
+      params: {
+        images: {
+          dims: {
+            width: 600,
+            height: 600,
+          }
+        },
+        storage: "local"
+      }
+    })
+  </script>
+
+
+
+  <!-- styling for webchat elements -->
+  <style>
+  </style>
+  </head>
+  <body>
+
+
+
+
+
+
+  </body>
+</html>
