@@ -1,6 +1,7 @@
+// Binary Search
+
 #include <bits/stdc++.h>
-#define ll long long int
-#define mod 1000000007
+
 using namespace std;
 
 int bs(int low, int high, int key)
@@ -8,8 +9,10 @@ int bs(int low, int high, int key)
 
     while (low <= high)
     {
-        int mid = (low + high) / 2;
+        int mid = (low + ((high - low) / 2)); // Overflow doesn't happen
+
         cout << mid << endl;
+
         if (mid * mid == key)
         {
             return mid;

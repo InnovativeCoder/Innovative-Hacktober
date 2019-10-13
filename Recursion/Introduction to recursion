@@ -1,0 +1,421 @@
+CMSC 202 Lecture Notes: Recursion
+
+
+1. Introduction
+Recursion is a technique that allows us to break down a problem into one or more subproblems that are similar in form to the original problem. For example, suppose we need to add up all of the numbers in an array. We'll write a function called add_array that takes as arguments an array of numbers and a count of how many of the numbers in the array we would like to add; it will return the sum of that many numbers.
+
+If we had a function that would add up all but the very last number in the array, then we would simply have to add the last number to that sum and we would be done. Add_array is an ideal function for adding up all but the last number (as long as the array contains at least one number). After all, add_array is responsible for taking an array and a count, and adding up that many array elements. If there are no numbers in the array, then zero is the desired answer. These observations suggest the following function:
+
+int add_array(int arr[], int count) {
+
+   if (count == 0) return 0;
+   return arr[count - 1] + add_array(arr, count - 1);
+}
+This function is perfectly legal C, and it operates correctly. Notice that the function has two components:
+a base case, represented by the if and the return 0, in which the function does not call itself. This handles the case where there are no numbers to add.
+a recursive case that breaks the problem down into a smaller version of the original problem together with an addition. In the recursive case, add_array is used to add together count-1 items; the count-th item is then added to this result (remember that the n-th item of an array is stored at position n-1).
+The call to add_array from inside add_array is called a recursive call.
+2. Example: The Factorial Function
+One of the classic examples of recursion is the factorial function. Although factorial is not the world's most interesting function, it will provide us with many useful observations.
+
+Recall that factorial, which is written n!, has the following definition:
+
+   n! = 1 * 2 * 3 * .... * (n-2) * (n-1) * n
+We can use this definition to write a C function that implements factorial:
+int fact(int n) {
+   int i;
+   int result;
+
+   result = 1;
+   for (i = 1; i <= n; i++) {
+      result = result * i;
+   }
+   return result;
+}
+This is a simple iterative function that mirrors the definition of factorial. We can derive a different definition for factorial by noticing that n! = n * (n-1)! and 1! = 1. For example, 4! = 4 * 3!. Notice that we need to specify a value for 1! because our definition does not apply when n=1. This kind of definition is known as an inductive definition, because it defines a function in terms of itself.
+We can write a C function that mirrors this new definition of factorial as follows:
+
+int fact(int n) {
+
+   if (n == 1) return 1;
+
+    return n * fact(n - 1);
+}
+Notice that this function precisely follows our new definition of factorial. It is recursive, because it contains a call to itself.
+Let's compare the two versions:
+
+The iterative version has two local variables; the recursive version has none.
+The iterative version has three statements; the recursive version has one.
+The iterative version must save the solution in an intermediate variable before it can be returned; the recursive version calculates and returns its result as a single expression.
+Recursion simplifies the fact function! It does so by making the computer do more work, so that you can do less work.
+3. Writing Recursive Functions
+To successfully apply recursion to a problem, you must be able to break the problem down into subparts, at least one of which is similar in form to the original problem. For example, suppose we want to count the number of occurrences of the number 42 in an array of n integers. The first thing we should do is write the header for our function; this will ensure that we know what the function is supposed to do and how it is called:
+
+int count_42s(int array[], int n);
+To use recursion on this problem, we must find a way to break the problem down into subproblems, at least one of which is similar in form to the original problem. If we know that the array contains n numbers, we might break our task into the subproblems of:
+counting the number of times that 42 appears in the first n-1 elements of the array (this is a subproblem that is similar in form to the original problem);
+counting the number of times that 42 appears in the n-th element of the array (i.e. determining whether the n-th element is 42); and
+adding these two sums together and returning the result.
+Part 1 of this decomposition suggests the following recursive call:
+count_42s(array, n-1);
+If successful, this recursive call will count all of the occurrences of the number 42 in the first n-1 positions of the array and return the sum (we will discuss the conditions that must hold for a recursive call to be successful in the Section 5; until then, we will assume that all recursive calls work properly). We must now determine how to use this result. If the last element in the array is not 42, then the number of 42s in the entire array is the same as the number of 42s in all but the last element of the array. If the last number in the array is 42, then the number of 42s in the entire array is one more than the number found in the subarray. This suggests the following code:
+   if (array[n-1] != 42) {
+      return count_42s(array, n-1);
+   }
+   return 1 + count_42s(array, n-1);
+Here we have two recursive calls (only one of which will actually be used in any given situation). We must now determine whether there are any circumstances under which this code will not work. In fact, this code will not work when n==0; in such a case it tries to subscript the array with -1, which is not a legal array subscript in C. (Oh alright, it's legal; it's just that it's almost never what you want, and will often lead to a segmentation fault or worse.) That means that unless we treat specially the case where n is zero, our function will not work when asked to count the number of 42s in an array of zero items. We will therefore add a base case that will test for n==0 and return zero as its result in that case. This gives the function:
+int count_42s(int array[], int n) {
+
+   if (n==0) return 0;
+   if (array[n-1] != 42) {
+      return count_42s(array, n-1);
+   }
+   return 1 + count_42s(array, n-1);
+}
+This is a perfectly good recursive solution to the count_42s problem. It is not the only recursive solution though; there are other ways to break the problem into subpieces. For example, we could break the array into two pieces of equal size, count the number of 42s in each half, then add the two sums. To do this, we will need to hand as arguments to count_42s not just the array and the subscript of the highest value in the array, but also the subscript of the lowest value in the array:
+int count_42s(int array[], int low, int high);
+A call such as count_42s(my_array, A, B) says "count all the occurrences of the number 42 in my_array that lie between position A and position B inclusive."
+We can calculate the midpoint between subscript low and subscript high with (high+low)/2. Thus we can count the number of 42s in each half of the array and add them together with:
+
+   count_42s(array, low, (low + high) / 2) +
+      count_42s(array, (low + high) / 2 + 1, high);
+We now have a recursive case but no base case. When will the recursive case fail? It fails when the array does not contain at least two numbers. If the array contains no items, or it contains one item that is not 42, then we should return zero. If the array contains exactly one number, and that number is 42, then we should return one. Putting it all together, we get:
+int count_42s(int array[], int low, int high) {
+   if ((low > high) ||
+       (low == high && array[low] != 42)) {
+      return 0 ;
+   }
+   if (low == high && array[low] == 42) {
+      return 1;
+   }
+   return count_42s(array, low, (low + high)/2) +
+         count_42s(array, 1 + (low + high)/2, high));
+}
+Note that the line
+   if (low == high && array[low] == 42)
+could properly be written simply as if (low==high). The comparison with 42 is included here simply to make each of the relevant conditions explicit in the same expression.
+These examples demonstrate that there may be many ways to break a problem down into subproblems such that recursion is useful. It is up to you the programmer to determine which decomposition is best. The general approach to writing a recursive program is to:
+
+write the function header so that you are sure what the function will do and how it will be called;
+decompose the problem into subproblems;
+write recursive calls to solve those subproblems whose form is similar to that of the original problem;
+write code to combine, augment, or modify the results of the recursive call(s) if necessary to construct the desired return value or create the desired side--effects; and
+write base case(s) to handle any situations that are not handled properly by the recursive portion of the program.
+4. Thinking About Recursion
+How should you think about a recursive subprogram? Do not immediately try to trace through the execution of the recursive calls; doing so is likely to simply confuse you. Rather, think of recursion as working via the power of wishful thinking. Consider the operation of fact(4) using the recursive formulation of fact. 4 is not 1, so the recursive case holds. The recursive case says to multiply fact(3) by 4. Here is where the wishful thinking comes in: wish for fact(3) to be calculated. Because this is a recursive call, your wish will be granted. You now know that fact(3)=6. So fact(4) is equal to 6 times 4, or 24 (which is just what it's supposed to be).
+
+An analogy you can use to help you think this way is corporate management. When the CEO of a corporation tells a vice-president to perform some task, the CEO doesn't worry about how the task is accomplished; he or she relies on the vice-president to get it done. You should think the same way when you are programming recursively. Delegate the subtask to the recursive call; don't worry about how the task actually gets done. Worry instead whether the top-level task will get done properly, given that all the recursive calls work properly.
+
+Another way to think about recursion is to pretend that a recursive call is actually a call to a different function, written by somebody else, that performs the same task that your function performs. For example, suppose we had a library routine called libfact that returned the factorial of its argument. We could then write our own version of fact as:
+
+int fact (int n) {
+
+    if (n == 1) return 1;
+
+    return n * libfact(n - 1);
+}
+This version of fact correctly returns one if its argument is one. If its argument is greater than one, it calls libfact to calculate (n-1)!, and multiplies the result by n. Because libfact is a library routine, we may assume that it works properly, in this case calculating the factorial of n-1. For example, if n is 4, then libfact is called with 3 as its argument; it returns 6. This is multiplied by 4 to get the desired result of 24.
+This example points out that a recursive call is just like any other function call. In particular, a recursive call gets its own parameter list and local variables, just as libfact would. Furthermore, while the recursive call is executing, the top--level call sits there waiting for the recursive call to terminate. This means that execution doesn't halt when a recursive call finds itself at the base case; once the recursive call returns, the top--level call then continues to execute.
+
+5. Ensuring that Recursion Will Work
+One of the most difficult aspects of programming recursively is the mental process of accepting on faith that the recursive call will do the right thing. The following checklist itemizes the five conditions that must hold for recursion to work. If each of these conditions holds for your recursive subprogram, you may feel confident that the recursion will operate correctly:
+
+A recursive subprogram must have at least one base case and one recursive case (it's OK to have more than one base case, and more than one recursive case).
+The test for the base case must execute before the recursive call.
+The problem must be broken down in such a way that the recursive call is closer to the base case than the top--level call. ( This condition is actually not quite strong enough. Moving toward the base case alone is not sufficient; it must also be true that the base case is reached in a finite number of recursive calls. In practice though, it is rare to encounter situations where there is always movement toward the base case but the base case is not reached).
+The recursive call must not skip over the base case.
+The non-recursive portions of the subprogram must operate correctly.
+Let's see whether the recursive fact function meets these criteria:
+
+The first condition is met, because if (n==1) return 1 is a base case, while the "else" part includes a recursive call (fact(n-1)).
+If we reach the recursive call, we must have already evaluated if (n==1); this if is the base case test, so criterion 2 is met.
+The recursive call is fact(n-1). The argument to the recursive call is one less than the argument to the top--level call to fact. Our base case occurs when n is one. The recursive call is therefore closer to the base case as long as n is positive. If n is not positive, the recursive call does not move toward the base case, so the function will not work properly (which is not surprising, given that factorial is defined only on positive integers).
+Because n is an integer, and the recursive call reduces n by just one, it is not possible to skip over the base case.
+Assuming that the recursive call works properly, we must now verify that the rest of the code works properly. We can do this by comparing the code with our second definition of factorial. This definition says that if n is one then n! is one. Our function correctly returns 1 when n is 1. If n is not one, the definition says that we should return (n-1)! * n. The recursive call (which we now assume to work properly) returns the value of n-1 factorial, which is then multiplied by n. Thus, the non--recursive portions of the function behave as required.
+6. Some Definitions
+This section describes some of the ways in which recursive functions are characterized. The characterizations are based on:
+
+whether the function calls itself or not (direct or indirect recursion).
+whether there are pending operations at each recursive call (tail-recursive or not).
+the shape of the calling pattern -- whether pending operations are also recursive (linear or tree-recursive).
+Direct Recursion:
+A C function is directly recursive if it contains an explicit call to itself. For example, the function
+int foo(int x) {
+
+   if (x <= 0) return x;
+
+   return foo(x - 1);
+}
+includes a call to itself, so it's directly recursive. The recursive call will occur for positive values of x.
+Indirect Recursion:
+A C function foo is indirectly recursive if it contains a call to another function which ultimately calls foo.
+The following pair of functions is indirectly recursive. Since they call each other, they are also known as mutually recursive functions.
+
+int foo(int x) {
+
+   if (x <= 0) return x;
+
+   return bar(x);
+}
+
+int bar(int y) {
+   return foo(y - 1);
+}
+Tail Recursion:
+A recursive function is said to be tail recursive if there are no pending operations to be performed on return from a recursive call.
+Tail recursive functions are often said to "return the value of the last recursive call as the value of the function." Tail recursion is very desirable because the amount of information which must be stored during the computation is independent of the number of recursive calls. Some modern computing systems will actually compute tail-recursive functions using an iterative process.
+
+The "infamous" factorial function fact is usually written in a non-tail-recursive manner:
+
+int fact (int n) { /* n >= 0 */
+
+   if (n == 0)  return 1;
+
+   return n * fact(n - 1);
+}
+Notice that there is a "pending operation," namely multiplication, to be performed on return from each recursive call. Whenever there is a pending operation, the function is non-tail-recursive. Information about each pending operation must be stored, so the amount of information is not independent of the number of calls.
+The factorial function can be written in a tail-recursive way:
+
+int fact_aux(int n, int result) {
+
+   if (n == 1) return result;
+
+   return fact_aux(n - 1, n * result)
+}
+
+
+int fact(n) {
+
+    return fact_aux(n, 1);
+}
+The "auxiliary" function fact_aux is used to keep the syntax of fact(n) the same as before. The recursive function is really fact_aux, not fact. Note that fact_aux has no pending operations on return from recursive calls. The value computed by the recursive call is simply returned with no modification. The amount of information which must be stored is constant (the value of n and the value of result), independent of the number of recursive calls.
+Linear and Tree Recursion:
+Another way to characterize recursive functions is by the way in which the recursion grows. The two basic ways are "linear" and "tree."
+A recursive function is said to be linearly recursive when no pending operation involves another recursive call to the function.
+
+For example, the "infamous" fact function is linearly recursive. The pending operation is simply multiplication by a scalar, it does not involve another call to fact.
+
+A recursive function is said to be tree recursive (or non-linearly recursive) when the pending operation does involve another recursive call to the function.
+
+The Fibonacci function fib provides a classic example of tree recursion. The Fibonacci numbers can be defined by the rule:
+
+   fib(n) = 0  if n is 0,
+          = 1  if n is 1,
+          = fib(n-1) + fib(n-2) otherwise
+For example, the first seven Fibonacci numbers are
+   Fib(0) = 0
+   Fib(1) = 1
+   Fib(2) = Fib(1) + Fib(0) = 1
+   Fib(3) = Fib(2) + Fib(1) = 2
+   Fib(4) = Fib(3) + Fib(2) = 3
+   Fib(5) = Fib(4) + Fib(3) = 5
+   Fib(6) = Fib(5) + Fib(4) = 8
+This leads to the following implementation in C:
+int fib(int n) { /* n >= 0 */
+
+   if (n == 0) return 0;
+
+   if (n == 1) return 1;
+
+   return  fib(n - 1) + fib(n - 2);
+}
+Notice that the pending operation for the recursive call is another call to fib. Therefore fib is tree-recursive.
+7. Converting Recursive Functions to be Tail Recursive
+A non-tail recursive function can often be converted to a tail-recursive function by means of an "auxiliary" parameter. This parameter is used to form the result. The idea is to attempt to incorporate the pending operation into the auxiliary parameter in such a way that the recursive call no longer has a pending operation. The technique is usually used in conjunction with an "auxiliary" function. This is simply to keep the syntax clean and to hide the fact that auxiliary parameters are needed.
+
+For example, a tail-recursive Fibonacci function can be implemented by using two auxiliary parameters for accumulating results. It should not be surprising that the tree-recursive fib function requires two auxiliary parameters to collect results; there are two recursive calls. To compute fib(n), call fib_aux(n 1 0)
+
+int fib_aux(int n, int next, int result) {
+
+  if (n == 0) return result;
+  return fib_aux(n - 1, next + result, next);
+}
+8. Converting Tail Recursive Functions to Iterative
+Let's assume that tail recursive functions can be expressed in the general form
+
+F(x) {
+
+   if (P(x))  return G(x);
+
+   return F(H(x));
+}
+That is, we establish a base case based on the truth value of the function P(x) of the parameter. Given that P(x) is true, the value of F(x) is the value of some other function G(x). Otherwise, the value of F(x) is the value of the function F on some other value, H(x). Given this formulation, we can immediately write an iterative version as
+F(x) {
+   int temp_x = x;
+
+   while (P(x) is not true) {
+      temp_x = x;
+      x = H(temp_x);
+   }
+   return G(x);
+}
+The reason for using the local variable temp_x will become clear soon. Actually, we will use one temporary variable for each parameter in the recursive function.
+Example - factorial function
+In the tail-recursive factorial function (fact_aux) given in Section 6,
+
+the function F is fact_aux
+x is composed of the two parameters, n and result
+the value of P(n, result) is the value of (n == 1)
+the value of G(n, result) is result
+the value of H(n, result) is (n -1, n * result)
+Therefore the iterative version is:
+
+int fact_iter(int n, int result) {
+   int temp_n;
+   int temp_result;
+
+   while (n != 1) {
+      temp_n = n;
+      temp_result = result;
+      n = temp_n - 1;
+      result = temp_n * temp_result;
+   }
+   return result;
+}
+The variable temp_n is needed so result will be computed on the basis of the unchanged n. The variable temp_result is not really needed, but is used to be consistent.
+Example - Fibonacci function
+In the tail-recursive fibonacci function (fib_aux) given in Section 7:
+
+The function F is fib_aux
+x is composed of the three parameters n, next, and result
+the value of P(n, next, result) is the value of (n == 0)
+the value of G(n, next, result) is result
+the value of H(n, next, result) is (n -1, next + result, next)
+Therefore the iterative version is
+int fib_iter(int n, int next, int result) {
+   int temp_n;
+   int temp_next;
+   int temp_result;
+
+   while (n != 0) {
+      temp_n = n;
+      temp_next = next;
+      temp_result = result;
+
+      n = temp_n - 1;
+      next = temp_next + temp_result;
+      result = temp_next;
+   }
+   return result;
+}
+9. Converting Iteration to Tail Recursion
+Just as it is possible to convert any recursive function to iteration, it is possible to convert any iterative loop into the combination of a recursive function and a call to that function. The ability to convert recursion to iteration is often quite useful, allowing the power of recursive definition with the (often) greater efficiency of iteration.
+
+Converting iteration to recursion is unlikely to be useful in practice, but it is a fine learning tool. This Section gives several examples of the relationship between programs that loop using C's built-in iteration constructs, and programs that loop using tail recursion.
+
+Suppose that we want to write a program that will read in a sequence of numbers, and print out both the maximum value and the position of the maximum value in the sequence. For example, if the input to our program is the sequence 2, 5, 6, 4, 1, then the program should tell us that the maximum number is 6, and that it occurs in position 3 of the input. Here is a program that performs this task using C's built-in iterative constructs:
+
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+
+#define MAX_NUMS 32
+#define max(num1,num2) ((num1) > (num2) ? (num1) : (num2))
+
+typedef int array_of_nums[MAX_NUMS];
+
+int main(void) {
+
+array_of_nums nums;
+int num_count;
+int max_num;
+int pos_of_max;
+int i;
+
+/* LOOP 1: Read in the numbers */
+num_count = 0;
+while(scanf("%d", &nums[num_count]) != EOF) {
+   num_count++;
+}
+assert(num_count > 0);
+
+/* LOOP 2: Find the maximum number */
+max_num = nums[0];
+for (i = 1; i < num_count; i++) {
+   max_num = max(max_num, nums[i]) ;
+}
+
+/* LOOP 3: Find the position of the maximum number */
+pos_of_max = 0;
+while (nums[pos_of_max] != max_num) {
+     pos_of_max++;
+}
+
+/* Print the results */
+printf("The largest number, which was %d, occurred in position number %d\n",
+       max_num, pos_of_max + 1);
+
+return EXIT_SUCCESS;
+}
+You will notice that the above program uses three loops and an array where one loop and an integer would have sufficed. However, the purpose of this program is not to show the best way to find the maximum of a sequence of numbers, but rather to exhibit a program that contains a few loops.
+
+We will convert each of the program's three loops into a tail recursive subprogram. The key to implementing a loop using tail recursion is to determine which variables capture the state of the computation; these variables will then serve as the parameters to the tail recursive subprogram. The first loop is a while loop that is responsible for reading numbers into an array. It terminates when scanf returns EOF. Aside from the EOF condition, two variables capture the state of the computation each time through this loop:
+
+num_count---the number of integers that have been read so far.
+nums---an array that stores those integers.
+To translate this loop into a tail recursive subprogram then, we will write a subprogram that takes these two values as arguments. Since we are interested in getting a final value for num_count, we will write a function that returns num_count as its result. If the termination condition (EOF) is not true, the procedure will increment num_count, read a number into nums, and call itself recursively to input the remainder of the numbers. If the termination condition is true, the procedure will simply return the final value of num_count. Here is the code:
+int read_nums(int num_count, array_of_nums nums) {
+
+   if (scanf("%d", &nums[num_count]) != EOF) {
+      return read_nums(num_count + 1, nums);
+   }
+   return num_count;
+}
+Notice that the recursive call to read_nums is closer to the base case (EOF) than the top--level call by virtue of the fact that the call to scanf consumes input. The base case test happens before the recursive call, and the base case will never be skipped. Finally, if there is no more input, we return the current value of num_count, which has accumulated exactly the return value we desire. If there is more input, we add one to num_count and recurse. In either case, if we assume that the recursive call works properly, we get exactly the return value we want. Thus this function meets each of our criteria for valid recursive functions.
+
+We must invoke this procedure with the correct initial values for its arguments; here is the appropriate code from the main program:
+
+   /* Read in the numbers */
+   num_count = read_nums(0, nums);
+   assert(num_count > 0);
+Notice that this call to read_nums causes the initial value of num_count in read_nums to be zero (which is exactly the initial value it had in the original loop). Assert is a statement defined in <assert.h>; it flags an error if its argument is false, and does nothing if its argument is true. The assert statement is used to ensure that at least one number is read in. Without this statement, subsequent code will bomb if no numbers are entered.
+
+Let's generalize from this example. In general, an iterative loop may be converted to a tail--recursive function by:
+
+determining what variables are used by the loop;
+writing a tail--recursive function that has one parameter for each of the identified variables;
+using the condition that causes the termination of the iterative loop as the base case test;
+determining how each variable changes from one iteration to the next, and handing the sequence of expressions that represent those changes as arguments to the recursive call; and
+Replacing the original iterative loop with a call to the tail--recursive function, using the initial value of each of the variables as arguments.
+The second loop is a for loop that is responsible for finding the value of the maximum input number. Before entering the for loop, we make the assumption that the zero-th number read in is the largest. We then loop through all but the zero-th element of nums, looking for a higher value. Four variables capture the state of the computation during this loop:
+
+max_num---the value of the largest number examined so far.
+i---the loop control variable.
+num_count---the number of input values.
+nums---the input values.
+Therefore, we will write a subprogram that takes these four values as arguments. Since we want to get a single value back---the value of the largest number---we will make our function return an int. As with any subprogram, we can give the formal parameters any names we choose. We will rename two of the values to give them more descriptive names. We will use the name max_so_far instead of max_num, and pos_to_test instead of i. Here is the code:
+int find_max(int max_so_far, int pos_to_test, int num_count, array_of_nums nums) {
+
+   if (pos_to_test < num_count) {
+      return find_max(max(max_so_far, nums[pos_to_test]),
+                     pos_to_test + 1, num_count, nums);
+   }
+   return max_so_far;
+}
+To invoke this function, we will need to pass the value of the zero-th number read in as its first argument, and 1 (which was the initial value of the loop control variable in the iterative version of the program) as its second argument. Here is the appropriate portion of the main program:
+
+
+   /* find the maximum number */
+   max_num = find_max(nums[0], i, num_count, nums);
+The third loop looks through the input numbers until it finds the first occurrence of the maximum number, then records the position of the maximum number. Three variables control the state of this computation:
+
+max_num---the value of the largest number.
+pos_of_max---the position of the number we are currently testing. This variable actually holds the position of the maximum number only when the loop is exited. Before the loop completes, this variable is effectively serving as a loop control variable.
+nums---the array of input numbers.
+These three values will serve as the parameters to our tail recursive subprogram. As with the second loop, we will use a function that returns an int. If the function finds the maximum value at the location specified by pos_to_test (which is the function's name for the variable pos_of_max in the original iterative version), it will return that position. If the value at the location specified by pos_to_test is not equal to the maximum value, the function will use tail recursion to search the remaining positions:
+int find_pos_of_max(int max_num, int pos_to_test, array_of_nums nums) {
+
+   if (nums[pos_to_test] != max_num) {
+      return find_pos_of_max(max_num, pos_to_test + 1, nums);
+   }
+   return pos_to_test;
+}
+Note that although the recursive call is not textually the last code of the function, it is the last instruction executed before the return if we have not yet found the position of the maximum number. Therefore, it is a tail recursive call. The invocation of this function in the main program looks as follows:
+   /* Find the position of the maximum number */
+   pos_of_max = find_pos_of_max(max_num, 0, nums);
+10. Exercises
+Write a recursive function that will count the number of occurrences of a given integer in an array. Your function count_occurrences should take three arguments: an array of ints, the number of elements in the array, and the integer occurrences of which in the array are to be counted.
+Write a recursive function called count_7s, which counts the number of occurrences of the digit 7 in the decimal representation of a given integer. For example, if the argument to count_7s is 3762797, count_7s should return 3 (because there are three occurrences of the digit 7 in 3762797). Hint: remember that n % 10 will give the remainder of n divided by ten, while n/10 will give the integer part of n divided by ten.
+Write a recursive function called replace_char that replaces every occurrence of a specified character in a string with another character. Your function, which should be a void function, should take three arguments: a string; a character to be replaced, and a character with which to replace it. For example, if foo contains the string "xizzi", then the call replace_char(foo, 'i', 'y') should modify foo so that it now contains the string "xyzzy". Note: if you are not familiar with string manipulation in C, skip this problem.
+Thomas A. Anastasio, Thu Sep 4 21:40:50 EDT 1997
+Modified by Richard Chang Fri Jan 16 22:51:58 EST 1998.

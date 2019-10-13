@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Snowy",
+  "version": "1.0",
+  "description": "Adds snowfall effect to the webpages",
+  "icons": {
+    "48": "main.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["main.js"]
+    }
+  ]
+}

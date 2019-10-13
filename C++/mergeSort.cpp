@@ -1,53 +1,81 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-#define ll long long
-void mergeFunction(ll array[],ll beginOfTheArray, ll mid, ll endOfTheArray){
-	ll newArray[endOfTheArray - beginOfTheArray + 1];
-	ll indexForTheNewArray = 0;
-	ll copyBegin = beginOfTheArray, copyMid = mid + 1;
-	for(ll i = beginOfTheArray; i <= endOfTheArray; i++){
-		if (copyBegin > mid){
-			newArray[indexForTheNewArray++] = array[copyMid++];
+void Merge(int a[], int l, int h, int mid)
+{
+	int i, j, k, c[h-l+1];
+	i = l;
+	k = 0;
+	j = mid + 1;
+ 
+	
+	while (i <= mid && j <= h)
+	{
+		if (a[i] < a[j])
+		{
+			c[k] = a[i];
+			k++;
+			i++;
 		}
-		else if(copyMid > endOfTheArray){
-			newArray[indexForTheNewArray++] = array[copyBegin++];
-		}
-		else if (array[copyBegin] < array[copyMid]){
-			newArray[indexForTheNewArray++] = array[copyBegin++];
-		}
-		else{
-			newArray[indexForTheNewArray++] = array[copyMid++];
+		else
+		{
+			c[k] = a[j];
+			k++;
+			j++;
 		}
 	}
-	for(ll i= 0; i < indexForTheNewArray; i++){
-		array[beginOfTheArray++] = newArray[i];
+ 
+	while (i <= mid)
+	{
+		c[k] = a[i];
+		k++;
+		i++;
+	}
+ 
+	while (j <= h)
+	{
+		c[k] = a[j];
+		k++;
+		j++;
+	}
+ 
+ 
+	for (i = l; i <= h; i++)
+	{
+		a[i] = c[i-l];
 	}
 }
-
-void mergeSort(ll array[],ll beginOfTheArray,ll endOfTheArray){
-	if(beginOfTheArray<endOfTheArray){
-		ll mid = (endOfTheArray - beginOfTheArray)/2 + beginOfTheArray;
-		mergeSort(array, beginOfTheArray,mid);  //Sort the left part of the array in Ascending Order
-		mergeSort(array,mid+1,endOfTheArray);   //Sort the Right part of the array in Ascending Order
-		mergeFunction(array,beginOfTheArray,mid,endOfTheArray); //Merge both the sorted parts of the array
+ 
+void MergeSort(int a[], int l, int h)
+{
+	int mid;
+	if (l< h)
+	{
+		mid=(l+h)/2;
+		MergeSort(a, l, mid);
+		MergeSort(a, mid+1, h);
+		Merge(a, l, h, mid);
 	}
 }
-int main(){
-	ll sizeOfTheArray;
-	cout<<"Enter number of elements to be sorted:\n";
-	cin>>sizeOfTheArray;
-	ll array[sizeOfTheArray];
-	cout<<"Enter elements one by one:\n";
-	for(ll i = 0 ; i < sizeOfTheArray ; i++){
-		cin>>array[i];
+ 
+int main()
+{
+	int n, i;
+	cout<<"\nEnter the number of data element to be sorted: "<<endl;
+	cin>>n;
+ 
+	int arr[n];
+	cout<<"Enter element:"<<endl;
+	for(i = 0; i < n; i++)
+	{
+		
+		cin>>arr[i];
 	}
-	mergeSort(array,0,sizeOfTheArray-1);
-	cout<<"Sorting is done.\n";
-	cout<<"------------------------------------------------------\n";
-	cout<<"After Sorting:\n";
-	for(ll i=0 ; i < sizeOfTheArray ; i++){
-		cout<<array[i]<<" ";
-	}
-	cout<<"\n";
+ 
+	MergeSort(arr, 0, n-1);
+ 
+	cout<<"\nSorted Data: "<<endl;
+	for (i = 0; i < n; i++)
+        cout<<arr[i]<<" ";
+ 
 	return 0;
 }
