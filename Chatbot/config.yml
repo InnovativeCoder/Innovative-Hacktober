@@ -1,11 +1,36 @@
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
 language: en
-pipeline: supervised_embeddings
-
-# Configuration for Rasa Core.
+pipeline:
+- name: "SpacyNLP"
+- name: "SpacyTokenizer"
+- name: "RegexFeaturizer"
+- name: "CRFEntityExtractor"
+  features: [
+              ["low", "title", "upper"],
+              ["bias", "low", "prefix5", "prefix2", "suffix5", "suffix3",
+               "suffix2", "upper", "title", "digit", "pattern"],
+              ["low", "title", "upper"]
+            ]
+- name: "EmbeddingIntentClassifier"
+- name: "DucklingHTTPExtractor"
+  # url of the running duckling server
+  url: "http://localhost:8000"
+  # dimensions to extract
+  dimensions: ["email","number"]
+  # allows you to configure the locale, by default the language is
+  # used
+  locale: "en_IN"
+  # if not set the default timezone of Duckling is going to be used
+  # needed to calculate dates from relative expressions like "tomorrow"
+  timezone: "Asia/Mumbai"
+  # if not set the default timezone of Duckling is going to be used
+  # needed to calculate dates from relative expressions like "tomorrow"
+  
+  # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
   - name: MemoizationPolicy
   - name: KerasPolicy
   - name: MappingPolicy
+  - name: FormPolicy
