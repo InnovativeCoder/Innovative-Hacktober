@@ -1,0 +1,161 @@
+
+
+
+html{
+  background: linear-gradient(to bottom, #243949 0%, #517fa4 100%);
+  height: 100%;
+}
+body{
+  background: transparent;
+}
+
+
+.container{
+  font-family: 'Noto Sans HK', sans-serif;
+  background: #FFF;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  max-width:480px;
+  margin:60px auto;
+  text-align:center;
+  padding-bottom: 30px;
+}
+
+.new-login-area{
+  padding:24px;
+}
+h3 {
+  font-size: 20px;
+  line-height: 30px;
+font-weight: bold;
+}
+label {
+  font-size: 12px;
+}
+.request-otp-header {
+  margin: 40px 0px;
+}
+.login-label label {
+  color: #110e0d;
+  font-weight: 600;
+}
+.input-edit {
+  border: none !important;
+  border-bottom: 2px solid #5682ac !important;
+  padding: 6px 6px;
+  opacity: 0.8;
+  cursor: text;
+  position: relative;
+  width: 50%;
+  left: 25%;
+}
+.input-edit:focus {
+  border-bottom-color: 2px solid #5682ac;
+  box-shadow: none;
+  outline: 0;
+  cursor: text;
+}
+
+.request-otp {
+  position: relative;
+  width: 30%;
+left: 35%;
+  margin-top: 40px;
+  background: rgb(21, 122, 205);
+  font-size: 14px;
+  color: #fff;
+}
+.request-otp:focus {
+  box-shadow: none;
+}
+.fa-chevron-left {
+  cursor: pointer;
+  position: absolute;
+  top: 20%;
+  left: 37%;
+}
+.resend-otp{
+  font-family: 'Noto Sans HK', sans-serif;
+  margin-top:6px;
+  cursor:pointer;
+  font-size: 15px;
+}
+
+
+.login-icon{
+  color:black;
+  font-size:100px;
+  font-weight:600;
+  margin:40px auto;
+}
+.login-icon img{
+  height: 130px;
+}
+.fa{
+  color: #000;
+}
+img{
+  border-radius: 0;
+  width: 190px;
+  height: 45px;
+}
+.col-sm-12{
+  padding-top: 20px;
+  font-size: 13px;
+}
+h6{
+position: relative;
+left : 47%;
+padding-top: 25px;
+}
+
+
+
+article {
+  width: 300px;
+  height: 90px;
+  text-align: center;
+  margin: 30px auto 10px;
+  overflow: hidden;
+}
+
+article h5 {
+  padding: 5px;
+  color: #000;
+}
+article .count {
+  padding: 1px;
+}
+article #timer{
+  height: 20px;
+  color: #000;
+} 
+
+.fa-mobile{
+  font-size: 15px;
+}
+
+@media only screen and (max-width : 768px){
+ html{
+   background:none;
+ }
+ .container{
+   margin:0;
+   box-shadow: none;
+ }
+ .input-edit{
+   width: 70%;
+   left: 13%;
+ }
+ .col-sm-4{
+   width: 30%;
+   float: left;
+   left: 18px;
+   font-size: 14px;
+ }
+ .fa-chevron-left {
+  cursor: pointer;
+  position: absolute;
+  top: 13%;
+  left: 10%;
+}
+}
