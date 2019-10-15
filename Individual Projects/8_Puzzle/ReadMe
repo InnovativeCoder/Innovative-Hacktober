@@ -1,0 +1,6 @@
+This is an 8 Puzzle game written in Python using Pygame.
+There are 9 tiles in a 3x3 square out which space for one tile is left empty.
+The player has to slide the tiles into that empty block and the game ends when the tiles are arranged in an increasing order.
+
+Requirement:
+            Pygame

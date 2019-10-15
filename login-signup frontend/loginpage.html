@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login page.com</title>
+    <link rel="stylesheet" href="loginpage.css">
+  </head>
+  <body>
+    <header>
+      <h1>Login Page</h1>
+    </header>
+
+    <section class="container">
+      <form id="my-form">
+        <h1>Login</h1><br>
+        <div class="msg"></div>
+        <div>
+          <label for="name">User Name:</label>
+          <input type="text" id="uname" placeholder="Enter user name">
+     
+        </div>
+        
+       
+        <div>
+          <label for="email">Email:</label>
+          <input  type="email" id="email" name ="email" placeholder="Enter valid E-mail">
+            
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input  type="password" id="password" name ="password" placeholder="Enter Password">
+            
+        </div>
+        <input class="btn" type="submit" value="Submit">
+        <div class="newUser">New User?  <a href='signup.html'> Sign Up</a></div>
+  
+  </form>
+
+      <ul id="users"></ul>
+
+      
+    </section>
+    
+
+    <script type = "text/javascript" src="loginpage.js">
+    </script>
+  </body>
+</html>
