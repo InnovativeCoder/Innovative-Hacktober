@@ -2,13 +2,13 @@
 console.time("cont");
 function pro(arr) {
 
-  var new_arr = [];
+  let new_arr = [];
 
   for (let i = 0; i < arr.length - 1; i++) {
     new_arr[i] = arr[i] * arr[i + 1];
   }
 
-  var l = new_arr[0];
+  let l = new_arr[0];
 
   for (let j = 0; j < new_arr.length - 1; j++) {
     if (l > new_arr[j + 1]) {
@@ -19,6 +19,7 @@ function pro(arr) {
 
     }
   }
+
   console.log(l);
 }
 console.timeEnd("cont");
@@ -27,5 +28,3 @@ pro([-23, 4, -3, 8, -12]);
 
 //git remote add origin https://github.com/codernuub/codernuub-Hacktober.git
 //git push origin master
-
-
