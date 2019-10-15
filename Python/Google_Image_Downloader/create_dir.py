@@ -10,14 +10,10 @@ All the folder operations are done on home
 project directory.
 """
 
-from shutil import copytree
-from shutil import move
-from os import chdir
-from os.path import exists
-from os.path import pardir
-from os import makedirs
-from os import removedirs
-from os import rename
+from shutil import copytree,move
+from os import chdir,makedirs,removedirs,rename
+from os.path import exists,pardir
+
 
 
 # Creates a directory
