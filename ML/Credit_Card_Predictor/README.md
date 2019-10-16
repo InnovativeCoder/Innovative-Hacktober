@@ -1,0 +1,1 @@
+This folder contains solution to Kaggle's Credit Card Fraud Predictor
