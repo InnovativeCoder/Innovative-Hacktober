@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+
+
+.container{
+    box-shadow: 1px 1px 3px rgba(0,0,0,2);
+    width:30%;
+    margin:100px auto;
+    background-color: #f7f7f7;
+    
+    
+    
+}
+li{
+    background-color: aliceblue;
+    height:40px;
+    line-height: 40px;
+}
+li:nth-child(2n) /* if 3n then every 3rd li would have the followed property*/
+{
+    background-color:cadetblue;
+    color:whitesmoke;
+}
+span{
+    background-color: red;
+    color:snow;
+    margin-right: 20px;
+    height:40px;
+    display: inline-block;
+    width:0;
+    text-align: center;
+    transition: 0.2s linear;
+    opacity: 0;
+        
+}
+li:hover span{
+    width:40px;  /*when we hover over a li we select span and set its width as 40 px*/
+    opacity: 1.0;
+}
+body{
+    background: #F1F2B5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #135058, #F1F2B5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #135058, #F1F2B5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.fa-pencil-alt{
+    float:right;
+}
+input{
+    font-size: 18px;
+    background-color: whitesmoke;
+    width:100%;
+    padding:13px 13px 13px 20px;
+    box-sizing: border-box; /*it includes the width and padding such that it fits in the box*/
+    font-family: cursive;
+    font-weight: 50;
+    border:3px solid white;  /*to remove the slight gap between input and other li we create an invisibe white border*/
+}
+input:focus{              /*it is like hover ...but it is active only when put the cursor inside the input*/
+    background-color:white;
+    outline:none;  /*that annoying blue outline that comes when we start typing*/
+    border:3px solid cadetblue;
+    
+    
+}
+ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+    font-family: 'Major Mono Display';
+}
+li{
+    background-color: aliceblue;
+    height:40px;
+    line-height: 40px;
+}
+li:nth-child(2n) /* if 3n then every 3rd li would have the followed property*/
+{
+    background-color:cadetblue;
+    color:whitesmoke;
+}
+h1{
+    background-color:darkcyan;
+    color:white;
+    margin:0;
+    font-weight: normal;
+    padding:7px 12px;
+    text-transform: uppercase;
+}
+.completed
+{
+    color:gray;
+    text-decoration: line-through;
+    
+}
