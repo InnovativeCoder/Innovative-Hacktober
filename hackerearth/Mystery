@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t,num,s,i,count;
+    cin>>t;
+    while(t--)
+    {
+        count=0;
+        cin>>num;
+        s=sqrt(num);
+       
+        for(i=1;i<=s;i++)
+        {
+            if(num%i==0)
+            count++;                //counting the number of divisors from 1 upto sqareroot of the number
+        }
+        if(num==0||num==1||num==2)      //these numbers have exactly same divisor as them
+        cout<<num<<"\n";
+        else
+            {
+                if(s*s==num)            //if the number have perfect square
+                 cout<<2*count-1<<"\n";     //no of divisor is 1 less than double of the divisor between 1 and sqaure root
+                else
+                 cout<<2*count<<"\n";   //if the number isn't perfect square then no of divisor is double the no of div betwn 1 to sqaure root of the no
+            } 
+    }   
+}
