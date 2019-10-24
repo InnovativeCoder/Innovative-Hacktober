@@ -1,0 +1,150 @@
+#title{
+	font-family: Brandon Grotesque;
+	font-size: 4vw;
+	text-align: right;
+	color:black;
+	padding-right:5%;
+}
+
+#title-div {
+	margin-top: 23vw
+}
+
+#head_div {
+	vertical-align: middle;
+	height: 50vw
+}
+
+#descrip{
+	font-family: Brandon Grotesque;
+	font-size: 2vw;
+	text-align: right;
+	color:black;
+	padding-right: 5%;
+}
+
+#header{
+	font-family: Brandon Grotesque;
+	color:white;
+	font-size: 2vw;
+	text-align: center;
+	margin-top: 20px;
+	align-self: center;
+}
+
+#main-list li{
+	margin: 0px 50px;
+	display: inline;
+	list-style: none;
+}
+
+a:hover{
+	cursor: pointer;
+}
+
+.dropdown-menu{
+	width:100%;
+}
+
+.dropdown:li{
+	align:center;
+}
+
+.top{
+	color: white;
+}
+
+a.top:link{
+	color:white;
+	text-decoration: none;
+}
+
+a.top:visited{
+	color: white;
+	text-decoration: none;
+}
+
+a.top:hover{
+	text-decoration:none;
+	cursor: pointer;
+	color: black;!important
+}
+
+body{
+	background-color:#FCB47F;
+	background-image:url("../img/projector.gif");
+	background-repeat: no-repeat;
+	background-position: 0px -3%;
+	background-size: contain;
+}
+
+#tablediv{
+	padding: 0px 0px 0px 0px;
+	background-image: url(../img/background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#gotop1{
+	left: 80%;
+	position: fixed;
+}
+
+table{
+	width:90%;
+	margin-top:50px;
+	text-align:center;
+	border:3px solid white;
+	padding:10px;
+}
+
+th{
+	background-color:#4CAF50;
+	color:white;
+	text-align:center;
+	padding:15px;
+}
+
+tr{
+	background-color:#D1D9D0;
+}
+
+td{
+	color:black;
+	padding:10px;
+}
+
+dl{
+	margin-left: 10%;
+}
+
+dd{
+	color:#646B74;
+}
+
+.actors{
+	text-align:left;
+}
+
+.photo{
+	height:240px;
+	width:150px;
+}
+
+#clear_button{
+	padding: none;
+	border: none;
+}
+
+.delete_button{
+	background-color: tomato;
+	color: white;
+	text-align: center;
+	padding: none;
+	border: none;
+}
+
+.likeORdislike-gif{
+	height:90px;
+	width:120px;
+}

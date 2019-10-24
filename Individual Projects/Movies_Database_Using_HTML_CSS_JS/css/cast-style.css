@@ -1,0 +1,42 @@
+#header{
+	font-family: Brandon Grotesque;
+	color:white;
+	font-size: 30px;
+	text-align: center;
+}
+
+a:hover{
+	text-decoration: none;
+	color: black;
+}
+
+a{
+	text-decoration: none;
+	color:white;
+}
+
+th{
+  color:white;
+  font-family: Brandon Grotesque;
+  font-size: 20px;
+  text-align: center;
+  background-color: #000000;
+  padding: 3px 40px;
+}
+
+td{
+  font-family: Brandon Grotesque;
+  font-size: 20px;
+  text-align: center;
+  background-color: #D1D9D0;
+  padding: 3px 40px;
+}
+
+body{
+  background-color: #FCB47F;
+}
+
+.photo{
+	height:240px;
+	width:150px;
+}

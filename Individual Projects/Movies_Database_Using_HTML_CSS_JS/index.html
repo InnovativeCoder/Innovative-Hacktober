@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+	<head>
+
+<!--BOOTSTRAP CDN-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--FONT AWESOME ICONS-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--GOOGLE ICONS-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!--CSS FILES-->
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="icon" href="img/movie-icon.png">
+<!--BOOTSTRAP SCRIPTS-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--JAVASCRIPT FUNCTIONS-->
+		<script src="script/myscript.js"></script>
+		<script>
+			(function(d,s,id){
+				var js,stags=d.getElementsByTagName(s)[0];
+				if(d.getElementById(id)){
+					return;
+				}
+				js=d.createElement(s);
+				js.id=id;
+				js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";
+				stags.parentNode.insertBefore(js,stags);
+			})
+			(document,"script","imdb-rating-api");
+		</script>
+		<title>Movie Database</title>
+
+	</head>
+
+	<body>
+		<div id="head_div">
+			<div id="header">
+				<div class="row" id="main-list">
+					<div class="col-sm-offset-3 col-sm-2"><a href="index.php" class="top">HOME</a></div>
+					<div class="col-sm-2">
+						<div class="dropdown" style="display:inline">
+							<a class="dropdown-toggle top" data-toggle="dropdown">
+								CAST
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li align="center"><a href="sec/cast.html">
+											<i class="fa fa-male">
+											</i>
+											ACTORS
+										</a>
+								<li align="center"><a href="sec/cast.html#actresses">
+											<i class="fa fa-female">
+											</i>
+											ACTRESSES
+										</a>
+							</ul>
+						</div>
+						</div>
+					<div class="col-sm-2"><a href="https://github.com/nav33nb" class="top">nav33nb</a></div>
+				</div>
+			</div>
+			<div id="title-div">
+				<p id="title">
+					MOVIE
+					DATABASE
+				</p>
+				<p id="descrip">
+					A small collection of various <br>popular movies
+				</p>
+			</div>
+		</div>
+		<hr>
+		<hr>
+		<div id="tablediv" class="table-responsive table-bordered">
+			<center>
+				<table style="border-collapse:separate; border-spacing: 2px;">
+					<!--ROW_00 iframe INFO-->
+					<tr>
+						<td colspan=8>
+							<iframe id="frame"	src="" name="testframe" width=100% height=500px>
+							</iframe>
+						</td>
+						<td>
+							<h3>
+								<button id="clear_button" type="button" onclick="resetIframe('frame')">
+									<img src="img/clear.png" alt="Clear Frame" height=60px width=60px>
+								</button>
+								Clear
+							</h3>
+							<br>
+							<br>
+							<br>
+							<a href="https://goo.gl/forms/xf2bokwqlSS8qHRy1" target="testframe">
+								<img src="img/plus.png" height="60px" width="60px">
+							</a>
+							<br>
+							<strong>
+								WANT YOUR MOVIE TO BE ADDED ?<br><br>
+							</strong>
+						</td>
+					</tr>
+					<!--ROW_01 MAIN HEADING-->
+					<tr>
+						<th colspan="9">
+							LIST OF MOVIES
+						</th>
+					</tr>
+					<!--ROW_02 INDIVIDUAL HEADING-->
+					<tr>
+						<th>S. No.</th>
+						<th>Poster</th>
+						<th>Movie Name</th>
+						<th>Directed by</th>
+						<th>Year</th>
+						<th>IMDB Rating</th>
+						<th>Further info</th>
+						<th>Trailer</th>
+						<th>Like or Dislike</th>
+					</tr>
+					<tr id="movie_01">
+						<td>1.</td>
+						<td><img class="photo" src="img/movies/avengers-infinity-war-poster-6.jpg" alt="Avengers Infinity War"></td>
+						<td>Avengers Infinity War</td>
+						<td>Anthony Russo</td>
+						<td>2018</td>
+						<td>
+							<span class="imdbRatingPlugin" data-user="ur89441763" data-title="tt4154756" data-style="p1">
+								<a href="https://www.imdb.com/title/tt4154756/?ref_=plg_rt_1">
+									<img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" alt=" Avengers: Infinity War(2018) on IMDb" />
+								</a>
+							</span>
+							<script>
+								(function(d,s,id){
+									var js,stags=d.getElementsByTagName(s)[0];
+									if(d.getElementById(id)){
+										return;
+									}
+									js=d.createElement(s);
+									js.id=id;
+									js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";
+									stags.parentNode.insertBefore(js,stags);
+								})(document,"script","imdb-rating-api");
+							</script>
+						</td>
+						<td>
+							<a href="https://en.wikipedia.org/wiki/Avengers:_Infinity_War" title="Open Wikipedia Page of this movie" target="testframe">
+								<img width="60" height="60" src="img/wiki.png"  onclick="onLinkClick()">
+								<br>
+									Open Wiki
+								</img>
+							</a>
+						</td>
+						<td><iframe width="420" height="240" src="https://www.youtube.com/embed/6ZfuNTqbHE8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+						<td>
+							<img class="likeORdislike-gif" id="td_img_001" src="img/likeOrDislike.gif"></img>
+							<br>
+							<button id="td_but_01" onclick="change2('movie_01','td_img_001','td_but_01')" innerHTML="Like">Like</button>
+						</td>
+					</tr>
+					<tr id="movie_02">
+						<td>2.</td>
+						<td><img class="photo" src="img/movies/the-dark-knight.jpg" alt="The Dark Knight"></td>
+						<td>The Dark Knight</td>
+						<td>Christopher Nolan</td>
+						<td>2008</td>
+						<td>
+							<span class="imdbRatingPlugin" data-user="ur89441763" data-title="tt0468569" data-style="p1"><a href="https://www.imdb.com/title/tt0468569/?ref_=plg_rt_1"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" alt=" The Dark Knight(2008) on IMDb" /></a></span><script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
+						</td>
+						<td>
+							<a href="https://en.wikipedia.org/wiki/The_Dark_Knight_(film)" title="Open Wikipedia Page of this movie" target="testframe">
+								<img width="60" height="60" src="img/wiki.png" onclick="onLinkClick()">
+								<br>
+									Open Wiki
+								</img>
+							</a>
+						</td>
+						<td><iframe width="420" height="240" src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+						<td>
+							<img class="likeORdislike-gif" id="td_img_002" src="img/likeOrDislike.gif"></img>
+							<br>
+							<button id="td_but_02" onclick="change2('movie_02','td_img_002','td_but_02')" innerHTML="Like">Like</button>
+						</td>
+					</tr>
+					<tr id="movie_03">
+						<td>3.</td>
+						<td><img class="photo" src="img/movies/dr-strange.jpg" alt="Doctor Strange"></td>
+						<td>Doctor Strange</td>
+						<td>Scott Derrickson</td>
+						<td>2016</td>
+						<td>
+							<span class="imdbRatingPlugin" data-user="ur89441763" data-title="tt1211837" data-style="p1"><a href="https://www.imdb.com/title/tt1211837/?ref_=plg_rt_1"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" alt=" Doctor Strange(2016) on IMDb" /></a></span><script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
+						</td>
+						<td>
+							<a href="https://en.wikipedia.org/wiki/Doctor_Strange_(2016_film)" title="Open Wikipedia Page of this movie" target="testframe">
+								<img width="60" height="60" src="img/wiki.png" onclick="onLinkClick()">
+								<br>
+									Open Wiki
+								</img>
+							</a>
+						</td>
+						<td><iframe width="420" height="240" src="https://www.youtube.com/embed/Lt-U_t2pUHI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+						<td>
+							<img class="likeORdislike-gif" id="td_img_003" src="img/likeOrDislike.gif"></img>
+							<br>
+							<button id="td_but_03" onclick="change2('movie_03','td_img_003','td_but_03')" innerHTML="Like">Like</button>
+						</td>
+					</tr>
+					<tr id="movie_04">
+						<td>4.</td>
+						<td><img class="photo" src="img/movies/interstellar.jpg" alt="Interstellar"></td>
+						<td>Interstellar</td>
+						<td>Christopher Nolan</td>
+						<td>2014</td>
+						<td>
+							<span class="imdbRatingPlugin" data-user="ur89441763" data-title="tt0816692" data-style="p1"><a href="https://www.imdb.com/title/tt0816692/?ref_=plg_rt_1"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" alt=" Interstellar(2014) on IMDb" /></a></span><script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
+						</td>
+						<td>
+							<a href="https://en.wikipedia.org/wiki/Interstellar_(film)" title="Open Wikipedia Page of this movie" target="testframe">
+								<img width="60" height="60" src="img/wiki.png" onclick="onLinkClick()">
+								<br>
+									Open Wiki
+								</img>
+							</a>
+						</td>
+						<td><iframe width="420" height="240" src="https://www.youtube.com/embed/zSWdZVtXT7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+						<td>
+							<img class="likeORdislike-gif" id="td_img_004" src="img/likeOrDislike.gif"></img>
+							<br>
+							<button id="td_but_04" onclick="change2('movie_04','td_img_004','td_but_04')" innerHTML="Like">Like</button>
+						</td>
+					</tr>
+					<tr id="movie_05">
+						<td>5.</td>
+						<td><img class="photo" src="img/movies/spiderman-homecoming.jpg" alt="Spiderman Homecoming"></td>
+						<td>Spiderman Homecoming</td>
+						<td>Jon Watts</td>
+						<td>2017</td>
+						<td>
+							<span class="imdbRatingPlugin" data-user="ur89441763" data-title="tt2250912" data-style="p1"><a href="https://www.imdb.com/title/tt2250912/?ref_=plg_rt_1"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" alt=" Spider-Man: Homecoming(2017) on IMDb" /></a></span><script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
+						</td>
+						<td>
+							<a href="https://en.wikipedia.org/wiki/Spider-Man:_Homecoming" title="Open Wikipedia Page of this movie" target="testframe">
+								<img width="60" height="60" src="img/wiki.png" onclick="onLinkClick()">
+								<br>
+									Open Wiki
+								</img>
+							</a>
+						</td>
+						<td><iframe width="420" height="240" src="https://www.youtube.com/embed/n9DwoQ7HWvI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+						<td>
+							<img class="likeORdislike-gif" id="td_img_005" src="img/likeOrDislike.gif"></img>
+							<br>
+							<button id="td_but_05" onclick="change2('movie_05','td_img_005','td_but_05')" innerHTML="Like">Like</button>
+						</td>
+					</tr>
+				</table>
+
+			</center>
+		</div>
+	</body>
+</html>
