@@ -1,0 +1,11 @@
+Metadata-Version: 1.1
+Name: qtgui
+Version: 0.0.1
+Summary: python3 pyqt wraper
+Home-page: UNKNOWN
+Author: Huang tao
+Author-email: huangtao.jh@gmail.com
+License: GPL
+Description: python3 pyqt wraper
+Platform: any
+Requires: pyqt3_pyqt5
