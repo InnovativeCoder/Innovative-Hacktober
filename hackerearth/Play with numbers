@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);   //fast io
+    long long int n,q,l,r,ans; //declaration
+    cin>>n>>q;
+    long long int a[n];          //main array
+    long long int sum[n+1];      //array to store sum for calculating mean
+    for(int i=0;i<n;i++)
+    cin>>a[i];                   //array input
+    sum[0]=0;                    //initializing sum to zero
+    for(int i=1;i<=n;i++)
+    {
+        sum[i]=sum[i-1]+a[i-1];    //adding sum of array elements for mean
+    }
+    while(q--)
+    {
+        cin>>l>>r;
+        ans=(sum[r]-sum[l-1])/(r-l+1);   //
+        cout<<ans<<'\n';
+    }
+}
