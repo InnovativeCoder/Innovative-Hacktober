@@ -1,0 +1,8 @@
+Finance = Investor+Loan+Insurance
+ASSMT = Insurance+Investor
+LnInvest = Loan + Investor
+Investor = Business Services/Financial Services
+Loan = Personal Loan &/or Mobile Loan &/or Consumer Durable Loan &/or Furniture Loan &/or 2-wheeler Loan &/or E - Bike Loan 
+Bank = Bank
+Home Loan = Home Loan / Housing Finance / Combination
+
