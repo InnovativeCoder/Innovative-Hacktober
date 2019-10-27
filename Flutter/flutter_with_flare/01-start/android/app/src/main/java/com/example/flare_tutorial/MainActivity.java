@@ -1,4 +1,4 @@
-package com.example.flutter_basics;
+package com.example.flare_tutorial;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
