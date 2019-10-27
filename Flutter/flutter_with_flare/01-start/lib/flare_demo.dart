@@ -7,20 +7,22 @@ class FlareDemo extends StatefulWidget {
 }
 
 class _FlareDemoState extends State<FlareDemo> {
+  bool isOpen = false;
+
   @override
   Widget build(BuildContext context) {
-    bool isOpen = false;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 102, 18, 222),
-      body: GestureDetector(
-        onTap: () {
-          setState(() {
-            isOpen = !isOpen;
-          });
-        },
-        child: FlareActor('assets/MultiOptionButton.flr',
-            animation: isOpen ? 'activate' : 'deactivate'),
-      ),
-    );
+        backgroundColor: Colors.purple,
+        body: GestureDetector(
+          onTap: (){
+            setState((){
+              isOpen = !isOpen;
+            });
+          },
+          child:
+              FlareActor(
+                'assets/button-animation.flr', 
+                animation: isOpen ? 'activate' : 'deactivate'),
+        ));
   }
 }
