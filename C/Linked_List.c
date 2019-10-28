@@ -98,6 +98,21 @@ int deletePos (int pos){
 		printf("Position not available"); 
 	}
 }
+int reverse()
+{
+	struct List* temp=head;
+	struct List* next=NULL;
+	struct List* prev=NULL;
+	while(temp!=NULL)
+	{
+		next=temp->node;
+		temp->node=prev;
+		prev=temp;
+		temp=next;
+	}
+	head=prev;
+}
+		
 
 int deleteLinkedList(){
 	if(numElem==0){
@@ -133,5 +148,6 @@ void main(){
 	PrintLinkedList();
 	deleteLinkedList();
 	deleteLinkedList();
+	reverse();
 
 }
