@@ -15,7 +15,7 @@
   "author": "Sanjit1",
   "license": "MIT",
   "dependencies": {
-    "electron": "^6.0.11",
+    "electron": "^7.2.4",
     "random-words": "^1.1.0"
   }
 }
