@@ -2,3 +2,4 @@
 .github
 .idea
 geeksForGeeks-problems/*.class
+node_modules
