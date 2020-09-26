@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Innovative</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+</head>
+<body>
+
+     <h1>Innovative Design</h1>
+
+     <div class="toggle-btn">
+          <span class="one"></span>
+          <span class="two"></span>
+     </div>
+
+     <div class="menu">
+          <div class="data">
+               <ul>
+                    <li>Navigation</li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact Us</a></li>
+               </ul>
+          </div>
+     </div>
+
+<script type="text/javascript">
+
+var t1 = new TimelineMax({paused: true});
+
+t1.to(".one", 0.8, {
+     y: 6,
+     rotation: 45,
+     ease: Expo.easeInOut
+});
+t1.to(".two", 0.8, {
+     y: -6,
+     rotation: -45,
+     ease: Expo.easeInOut,
+     delay: -0.8
+});
+
+t1.to(".menu", 2, {
+     top: "0%",
+     ease: Expo.easeInOut,
+     delay: -2
+});
+
+t1.staggerFrom(".menu ul li", 2, {x: -200, opacity: 0, ease:Expo.easeOut}, 0.3);
+
+t1.reverse();
+$(document).on("click", ".toggle-btn", function() {
+     t1.reversed(!t1.reversed());
+});
+$(document).on("click", "a", function() {
+     t1.reversed(!t1.reversed());
+});
+
+
+</script>
+
+</body>
+</html>
