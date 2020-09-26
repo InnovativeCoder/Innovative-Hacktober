@@ -1,0 +1,29 @@
+1.Given a string, find all possible palindromic partitions of given string.
+
+Example:
+AllPalindromPArtition
+
+Note that this problem is different from Palindrome Partitioning Problem, there the task was to find the partitioning with minimum cuts in input string. Here we need to print all possible partitions.
+
+
+
+The idea is to go through every substring starting from first character, check if it is palindrome. If yes, then add the substring to solution and recur for remaining part. Below is complete algorithm.
+
+2.Check if a number is Palindrome
+Given an integer, write a function that returns true if the given number is palindrome, else false. For example, 12321 is palindrome, but 1451 is not palindrome.
+
+3.Find all even length binary sequences with same sum of first and second half bits
+Given a number n, find all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+
+Examples:
+
+Input:  N = 2
+Output:
+0101 1111 1001 0110 0000 1010
+
+Input:  N = 3
+Output:
+011011 001001 011101 010001 101011 111111
+110011 101101 100001 110101 001010 011110
+010010 001100 000000 010100 101110 100010
+110110 100100
