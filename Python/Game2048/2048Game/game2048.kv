@@ -1,0 +1,220 @@
+#:kivy 1.7.2
+#:import rgb kivy.utils.get_color_from_hex
+
+<BoxButton@ButtonBehavior+BoxLayout>:
+	source: ''
+	orientation: 'vertical'
+	padding: '8dp'
+	canvas.before:
+		Color:
+			rgb: 0xbb / 255., 0xad / 255., 0xa0 / 255.
+		#todo BorderImage not required at first
+		BorderImage:
+			pos: self.pos
+			size: self.size
+			source: 'data/round.png'
+
+    # todo Image not required at first to grab image leadership and all
+	Image:
+		source: root.source
+
+<TextButton@Button>:
+	color: 1, 1, 1, 1
+	background_color: 0xbb / 255., 0xad / 255., 0xa0 / 255., 1.
+	# todo backgorund_normal and down not required at first
+	background_normal: 'data/round.png'
+	background_down: 'data/round.png'
+
+
+	size_hint_y: None
+	height: '48dp'
+	font_size: '20dp'
+	bold: True
+
+<Number>:
+	canvas.before:
+	    # todo not requird at first PushMatrix and Pop matrix
+		PushMatrix
+
+
+		# required translate is to render the number in anchor layout
+		Translate:
+			xy: self.center_x, self.center_y
+	    # scale not required
+		Scale:
+			xyz: root.scale, root.scale, 0
+		Translate:
+			xy: -self.center_x, -self.center_y
+	canvas.after:
+		PopMatrix
+
+	canvas:
+	    #color of button number background
+		Color:
+			rgb: self.colors.get(self.number, self.colors.get(4))
+
+		# todo BorderImage not required at first
+		BorderImage:
+			pos: self.pos
+			size: self.size
+			source: 'data/round.png'
+
+	Label:
+	    #number
+		text: str(root.number)
+		font_size: min(self.height, self.width) / 2.5
+		color: rgb('#f9f6f2') if root.number >= 8 else rgb('#776e65')
+		bold: True
+		size: root.size
+		center: root.center
+
+
+BoxLayout:
+    #main game background
+	padding: '10dp'
+	spacing: '10dp'
+	orientation: 'vertical' if self.height > self.width else 'horizontal'
+	canvas:
+		Color:
+			rgb: 0xfa / 255., 0xf8 / 255., 0xef / 255.
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+
+
+
+
+
+    #todo box layout not required at first
+	BoxLayout:
+	    # todo orientation not required at first
+
+		orientation: 'vertical' if root.height > root.width else 'horizontal'
+		size_hint_y: .25 if root.height > root.width else 1
+
+		BoxLayout:
+
+			spacing: '10dp'
+			padding: '5dp'
+			orientation: 'vertical' if root.height < root.width else 'horizontal'
+
+			Label:
+				text: '2048'
+				font_size: min(self.height, self.width) / 2.
+				color: 0x77 / 255., 0x6e / 255., 0x65 / 255., 1.
+				bold: True
+
+			BoxLayout:
+				orientation: 'vertical'
+				spacing: '10dp'
+
+				BoxLayout:
+					orientation: 'vertical'
+					canvas.before:
+						Color:
+							rgb: 0xbb / 255., 0xad / 255., 0xa0 / 255.
+
+						#todo BorderImage not required at first
+						BorderImage:
+							pos: self.pos
+							size: self.size
+							source: 'data/round.png'
+
+                    # todo Label not required at first
+					Label:
+						text: 'SCORE'
+						color: 0xee / 255., 0xe4 / 255., 0xda / 255., 1.
+						font_size: self.height / 1.5
+						size_hint_y: .5
+						bold: True
+
+
+					# Label not required at first
+					Label:
+						text: str(game.score)
+						font_size: self.height / 1.5
+						bold: True
+
+				BoxLayout:
+					id: scoring
+					spacing: '10dp'
+					BoxButton:
+						source: 'data/icon-leaderboard.png'
+
+					BoxButton:
+						source: 'data/icon-achievements.png'
+
+
+
+
+
+
+
+
+	AnchorLayout:
+		id: anchor
+
+		Game2048:
+			id: game
+			size_hint: None, None
+			size: [min(anchor.width, anchor.height)] * 2
+			on_size: self.reposition()
+			on_pos: self.reposition()
+
+
+<Game2048>:
+	AnchorLayout:
+		id: end
+		pos: root.pos
+		size: root.size
+		opacity: 0
+
+		canvas:
+			Color:
+				rgba: 0xfa / 255., 0xf8 / 255., 0xef / 255., self.opacity - 0.2
+			BorderImage:
+				pos: self.pos
+				size: self.size
+				source: 'data/round.png'
+
+
+
+
+# still using 1.7.2 for android, and i want the title color
+# ModalView widget
+<-Popup>:
+    _container: container
+    canvas:
+        Color:
+            rgba: root.background_color[:3] + [root.background_color[-1] * self._anim_alpha]
+        Rectangle:
+            size: self._window.size if self._window else (0, 0)
+
+        Color:
+            rgb: 1, 1, 1
+        BorderImage:
+            source: root.background
+            border: root.border
+            pos: self.pos
+            size: self.size
+    GridLayout:
+        padding: 12
+        cols: 1
+        size_hint: None, None
+        pos: root.pos
+        size: root.size
+
+        Label:
+            text: root.title
+			color: 0x77 / 255., 0x6e / 255., 0x65 / 255., 1.
+            size_hint_y: None
+            height: self.texture_size[1] + 16
+            text_size: self.width - 16, None
+            font_size: root.title_size
+
+
+
+        BoxLayout:
+            id: container
+
