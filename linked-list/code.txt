@@ -1,0 +1,67 @@
+#include<iostream> //code in c++
+using namespace std;
+
+class node //basic structure of a node (can use struct instead of class)
+{
+	public:
+		int data;
+		node*next; //pointer to the node itself
+		
+		node()  //contructor to intialize
+		{
+			data=0;
+			next=NULL;
+		}
+} *head=NULL;
+
+void insert_node(int d) //to insert node at the end 
+{
+	node* ptr= new node(); //dynamic allocation of memory
+	ptr->data=d;
+	ptr->next=NULL;
+	
+	if(head==NULL)
+	{
+		head=ptr;
+	}
+	else
+	{
+		node* temp=head;
+		while(temp->next !=NULL)
+		{
+			temp-temp->next;
+		}
+		temp->next=ptr;
+	}
+	
+}
+
+void print_list() //function to printlist
+{
+	node*temp=head;
+	while(temp->next != NULL)
+	{
+		cout<<temp->data<<" ";
+		temp=temp->next;
+	}
+}
+
+int main() 
+{
+	cout<<"Enter the length of list for intialization:"<<endl;
+	int n;
+	cin>>n;
+	int arr[n];
+	cout<<"Enter the value :";
+	for(int i=0;i<n;i++)
+	{
+		insert_node(arr[i]);
+	}
+	cout<<endl<<"The values inserted:"<<endl;
+	print_list();
+	cout<<"if the list is to be increased, the function insert_node can be called again"<<endl;
+	
+	return 0;
+}
+
+
