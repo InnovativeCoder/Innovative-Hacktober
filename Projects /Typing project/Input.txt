@@ -1,8 +1,0 @@
-he simplest form of disk scheduling is, of course, the first-come, first-served
-(FCFS) algorithm. This algorithm is intrinsically fair, but it generally does not
-provide the fastest service. Consider, for example, a disk queue with requests
-for I/O to blocks on cylinders
-98, 183, 37, 122, 14, 124, 65, 67,
-in that order. If the disk head is initially at cylinder 53, it will first move from
-53 to 98, then to 183, 37, 122, 14, 124, 65, and finally to 67, for a total head
-movement of 640 cylinders. This schedule is diagrammed in Fig
